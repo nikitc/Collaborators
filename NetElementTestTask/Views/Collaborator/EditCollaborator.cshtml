@@ -1,0 +1,105 @@
+﻿@model CollaboratorModel
+
+@{
+    var collaboratorId = Model.Id;
+    ViewBag.Title = collaboratorId == null ? "Добавление сотрудника" : "Редактирование информации сотрудника";
+}
+
+<div class="collaborator-info">
+    <h3>@ViewBag.Title</h3>
+    @using (Html.BeginForm("Edit", "Collaborator", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.Id)
+        <div class="form-group autocomplete-field">
+            @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })<br />
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", id = "inputName", autocomplete = "off" })
+            <div id="name-autocomplete">
+                <ul id="name-list">
+                </ul>
+            </div>
+            @Html.ValidationMessageFor(m => m.FirstName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.SecondName, new { @class = "control-label" })<br />
+            @Html.TextBoxFor(m => m.SecondName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.SecondName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MiddleName, new { @class = "control-label" })<br />
+            @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MiddleName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Experience, new { @class = "control-label" })<br />
+            @Html.TextBoxFor(m => m.Experience, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Experience)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Age, new { @class = "control-label" })<br />
+            @Html.TextBoxFor(m => m.Age, new { @class = "form-control", type = "number" })
+            @Html.ValidationMessageFor(m => m.Age)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Sex, new { @class = "control-label" })<br />
+            <label class="select-sex">@Html.RadioButtonFor(m => m.Sex, "Женский") Женский</label> <br />
+            <label class="select-sex">@Html.RadioButtonFor(m => m.Sex, "Мужской") Мужской</label> <br />
+            @Html.ValidationMessageFor(m => m.Sex)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DepartmentId, new { @class = "control-label" })<br />
+            @Html.DropDownListFor(m => m.DepartmentId, Model.Depatments)
+            @Html.ValidationMessageFor(m => m.DepartmentId)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ProgrammingLanguageId, new { @class = "control-label" })<br />
+            @Html.DropDownListFor(m => m.ProgrammingLanguageId, Model.ProgrammingLanguages)
+            @Html.ValidationMessageFor(m => m.ProgrammingLanguageId)
+        </div>
+        <div class="form-group">
+            <input type="submit" value="@(collaboratorId == null ? "Создать" : "Изменить информацию")" class="btn btn-default" />
+        </div>
+    }
+</div>
+<script type="text/javascript" src="~/lib/jquery-min/jquery-3.3.1.min.js"></script>
+<script>
+    $("#inputName").on("input",
+        function() {
+            $("#name-list").empty();
+            if ($("#inputName").val() === '') {
+                $("#name-autocomplete").hide();
+                return;
+            }
+            $.ajax({
+                url: '@Url.Action("SearchName", "Collaborator")',
+            type: "GET",
+            data: {
+                value: $("#inputName").val()
+            },
+            success: function (response) {
+                if (response.data.length) {
+                    $("#name-autocomplete").show();
+                    $.each(response.data, function (index, value) {
+                        jQuery('<li/>', {
+                            class: 'name-element',
+                            text: value
+                        }).appendTo('#name-list');
+                    });
+
+                    $("li").on('mousedown', function () {
+                        $("#inputName").val($(this).text());
+                        $("#name-list").empty();
+                        $("#name-autocomplete").hide();
+                    });
+                }
+            },
+            error: function(textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    });
+
+    $("#inputName").blur(function() {
+        $("#name-list").empty();
+        $("#name-autocomplete").hide();
+    });
+</script>

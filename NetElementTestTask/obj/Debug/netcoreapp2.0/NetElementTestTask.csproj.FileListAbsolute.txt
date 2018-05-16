@@ -1,0 +1,11 @@
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\bin\Debug\netcoreapp2.0\NetElementTestTask.deps.json
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\bin\Debug\netcoreapp2.0\NetElementTestTask.runtimeconfig.json
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\bin\Debug\netcoreapp2.0\NetElementTestTask.runtimeconfig.dev.json
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\bin\Debug\netcoreapp2.0\NetElementTestTask.dll
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\bin\Debug\netcoreapp2.0\NetElementTestTask.pdb
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\obj\Debug\netcoreapp2.0\NetElementTestTask.csproj.CoreCompileInputs.cache
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\obj\Debug\netcoreapp2.0\NetElementTestTask.AssemblyInfoInputs.cache
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\obj\Debug\netcoreapp2.0\NetElementTestTask.AssemblyInfo.cs
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\obj\Debug\netcoreapp2.0\NetElementTestTask.dll
+C:\Users\Nikita\source\repos\NetElementTestTask\NetElementTestTask\obj\Debug\netcoreapp2.0\NetElementTestTask.pdb
+c:\users\nikita\source\repos\NetElementTestTask\NetElementTestTask\obj\Debug\netcoreapp2.0\NetElementTestTask.csprojResolveAssemblyReference.cache

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CollaboratorModel>
+
+@{
+    ViewData["Title"] = "Список сотрудников";
+}
+
+<section>
+    <header>
+        @using (Html.BeginForm("SearchCollaborators", "Home", FormMethod.Get, new { @class = "search-row" }))
+        {
+            <span>Поиск:</span>
+            <input class="search" type="text" name="searchValue" size="30">
+            <input type="submit" value="Найти" class="btn btn-default" />
+        }
+    </header>
+    <article class="row collaborators">
+        <h2>Список сотрудников</h2>
+        <a class="create-button" href="@Url.Action("Create", "Collaborator")">Добавить сотрудника</a>
+        @if (Model != null && Model.Any())
+        {
+            <table class="table">
+                <tr>
+                    <th>ФИО</th>
+                    <th>Возраст</th>
+                    <th>Пол</th>
+                    <th>Отдел</th>
+                    <th>Язык программирования</th>
+                    <th>Опыт</th>
+                    <th>Действия</th>
+                </tr>
+                @foreach (var collaborator in Model)
+                {
+                    <tr>
+                        <td>@(string.Join(" ", collaborator.SecondName, collaborator.FirstName, collaborator.MiddleName))</td>
+                        <td>@collaborator.Age</td>
+                        <td>@collaborator.Sex</td>
+                        <td>@collaborator.DepartmentName</td>
+                        <td>@collaborator.ProgrammingLanguageName</td>
+                        <td>@collaborator.Experience</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Collaborator", new {id = collaborator.Id})">Редактировать</a><br>
+                            <a href="@Url.Action("Delete", "Collaborator", new {id = collaborator.Id})">Удалить</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <span>Сотрудники не найдены</span>
+        }
+    </article>
+</section>

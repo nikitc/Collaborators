@@ -1,0 +1,97 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.search-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.create-button {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+.collaborators {
+    position: relative;
+}
+
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.collaborator-info {
+    width: 40%;
+}
+
+.select-sex {
+    font-weight: normal;
+}
+
+.collaborators {
+    width: 100%;
+}
+
+.autocomplete-field {
+    position: relative;
+}
+
+#name-autocomplete {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    max-height: 90px;
+    overflow-y: auto;
+    width: 100%;
+    border-radius: 2px;
+    display: none;
+    border: 1px solid #008080;
+    background-color: #ffffff;
+}
+
+#name-list {
+    list-style: none;
+    margin-bottom: 0;
+    min-height: 30px;
+    padding-left: 0;
+}
+
+#name-list li {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 5px;
+}
+
+#name-list li:hover {
+    cursor: pointer;
+    background-color: #008080;
+    color: #ffffff;
+}
